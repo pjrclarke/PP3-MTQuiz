@@ -17,22 +17,33 @@ def clear():
 
 
 def welcome_page():
- 
     global username
     print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
             s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
             s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
-    print(Back.RED + Style.BRIGHT)
-    tprint("{:>20}".format("Musical"), font="rnd-medium\n")
-    print(Back.BLUE + Style.BRIGHT)
-    tprint("{:>20}".format("Theater"), font="rnd-medium\n")
-    print(Back.MAGENTA + Style.BRIGHT)
-    tprint("{:>20}".format("quiz"), font="rnd-medium\n")
-    print(Back.RESET + Style.RESET_ALL + Fore.RESET + "\n")
+    print(Fore.LIGHTRED_EX + Style.BRIGHT)
+    tprint("{:>10}".format("Musical"), font="rnd-medium\n" +
+        Fore.RESET + Style.RESET_ALL)
+    print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
+            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
+    print(Fore.LIGHTBLUE_EX + Style.BRIGHT)
+    tprint("{:>15}".format("Theater"), font="rnd-medium\n" +
+        Fore.RESET + Style.RESET_ALL)
+    print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
+            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
+    print(Fore.LIGHTMAGENTA_EX + Style.BRIGHT)
+    tprint("{:>20}".format("quiz"), font="rnd-medium\n" +
+        Fore.RESET + Style.RESET_ALL)
+    print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
+            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
+    print(Style.RESET_ALL + Fore.RESET + "\n")
     print("Welcome to the Musical Theater Quiz!\n")
     while True:
         try:
-            username = input("Before we start, please enter your name:\n")
+            username = input("Before we start, please enter your name:\n\n")
         except ValueError:
             clear()
             print(f"\n{username} is invalid entry!")
@@ -46,9 +57,8 @@ def welcome_page():
             print("Username must be 3 - 10 characters long\n")
 
 def main_menu_page():
-  
+
     def menu_options():
-        
         print(f"Welcome {username}!\n")
         print(
             f"Please select 1, 2, 3 or 4 from the Main Menu below.\n "
@@ -90,12 +100,12 @@ def main_menu_page():
             menu_options()
             sleep(0.2)
             print(f"Not a valid entry!")
-            print(f"Please enter 1, 2, 3 or 4!\n")       
-         
+            print(f"Please enter 1, 2, 3 or 4!\n")
+
 def instructions():
     """
-    Displays game instructions. Includes option to return to main
-    menu by pressing enter key.
+    Displays instructions. Includes option to return to main
+    menu.
     """
     print(Fore.LIGHTGREEN_EX)
     tprint("{:>20}".format("Instructions"), font="rnd-medium\n")
@@ -118,7 +128,6 @@ def instructions():
         pass
 
 def main():
-   
     welcome_page()
     clear()
     main_menu_page()
