@@ -1,12 +1,13 @@
 import random
 from time import sleep
+import sys
 import os
 from art import *
 from colorama import Fore, Back, Style
 
 username = ""
 POINTS = 0
-
+s = "\u272a"
 
 def clear():
     if os.name == 'nt':
@@ -18,12 +19,15 @@ def clear():
 def welcome_page():
  
     global username
-    print(Back.RED + Style.BRIGHT + "\n")
-    tprint("Musical", font="rnd-medium\n")
+    print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
+            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
+            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
+    print(Back.RED + Style.BRIGHT)
+    tprint("{:>20}".format("Musical"), font="rnd-medium\n")
     print(Back.BLUE + Style.BRIGHT)
-    tprint("Theater", font="rnd-medium\n")
+    tprint("{:>20}".format("Theater"), font="rnd-medium\n")
     print(Back.MAGENTA + Style.BRIGHT)
-    tprint("quiz", font="rnd-medium\n")
+    tprint("{:>20}".format("quiz"), font="rnd-medium\n")
     print(Back.RESET + Style.RESET_ALL + Fore.RESET + "\n")
     print("Welcome to the Musical Theater Quiz!\n")
     while True:
@@ -87,7 +91,32 @@ def main_menu_page():
             sleep(0.2)
             print(f"Not a valid entry!")
             print(f"Please enter 1, 2, 3 or 4!\n")       
-            
+         
+def instructions():
+    """
+    Displays game instructions. Includes option to return to main
+    menu by pressing enter key.
+    """
+    print(Fore.LIGHTGREEN_EX)
+    tprint("{:>20}".format("Instructions"), font="rnd-medium\n")
+    print(Fore.RESET)
+    print("To play the game, all you have to do is answer all")
+    print("30 questions correctly.\n")
+    print("To select your answer, enter corresponding number and press enter.")
+    print("Every correct answer is worth 1 point.\n\n")
+    print(Fore.LIGHTRED_EX + "If you get a question wrong your game is over.\n\n" + Fore.RESET)
+    print("Your points are recorded and uploaded to the leaderboard.\n")
+    print("If you've done well enough, you could be in the top 10 and see your")
+    print("name on the leaderboard.\n")
+    print("To quit the game during play, press the letter Q to")
+    print("return to main menu\n")
+    try:
+        input("Press Enter to go back to main menu...\n")
+        clear()
+        main_menu_page()
+    except SyntaxError:
+        pass
+
 def main():
    
     welcome_page()
