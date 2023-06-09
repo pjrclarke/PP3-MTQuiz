@@ -1,5 +1,9 @@
-
-
-    "In which Broadway musical does Jack sing “There are giants in the sky”?" = [
-    "1. Cats", "2. Les Miserables", "3. Into the Woods", "4. Titanic: The Musical"
+"In which Broadway musical does Jack sing 'There are giants in the sky'?" = [ 
+    "Into the Woods", "Cats", "Les Miserables", "Titanic: The Musical"
     ]
+
+"Which Broadway musical featured a helicopter onstage?" = [
+    "Miss Saigon", "South Pacific ", "Oh! What a Lovely War",
+    "This is the Army"
+    ]
+ 

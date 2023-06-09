@@ -4,10 +4,19 @@ import sys
 import os
 from art import *
 from colorama import Fore, Back, Style
+import pathlib
+try:
+    import tomllib
+except ModuleNotFoundError:
+    import tomli as tomllib
+from string import ascii_lowercase
 
+QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
+QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
 username = ""
 POINTS = 0
 s = "\u272a"
+NUM_QUESTIONS_PER_QUIZ = 5
 
 def clear():
     if os.name == 'nt':
@@ -76,7 +85,7 @@ def main_menu_page():
  {username}?\n")))
             if user_option == 1:
                 clear()
-                print("1 selected")
+                play()
             elif user_option == 2:
                 clear()
                 instructions()
@@ -101,6 +110,50 @@ def main_menu_page():
             sleep(0.2)
             print(f"Not a valid entry!")
             print(f"Please enter 1, 2, 3 or 4!\n")
+
+def prepare_questions(questions, num_questions):
+    num_questions = min(num_questions, len(questions))
+    return random.sample(list(questions.items()), k=num_questions)
+
+def get_answer(question, alternatives):
+    print(f"{question}?")
+    labeled_alternatives = dict(zip(ascii_lowercase, alternatives))
+    for label, alternative in labeled_alternatives.items():
+        print(f"  {label}) {alternative}")
+
+    while (answer_label := input("\nChoice? \n")) not in labeled_alternatives:
+        print(f"Please answer one of {', '.join(labeled_alternatives)}")
+
+    return labeled_alternatives[answer_label]
+
+def ask_question(question, alternatives):
+    correct_answer = alternatives[0]
+    ordered_alternatives = random.sample(alternatives, k=len(alternatives))
+
+    answer = get_answer(question, ordered_alternatives)
+    if answer == correct_answer:
+        print(Fore.LIGHTGREEN_EX + "\n\n Correct!\n\n"  + Fore.RESET)
+        sleep(2)
+        clear ()
+        return 1
+    else:
+        print(Fore.LIGHTRED_EX + f"\n\nNope! You really thought that {answer!r}",
+            "was the answer?\n\n" + Fore.RESET)
+        sleep(2)
+        clear()
+        return 0
+
+def play():
+    questions = prepare_questions(
+        QUESTIONS, num_questions=NUM_QUESTIONS_PER_QUIZ
+    )
+
+    num_correct = 0
+    for num, (question, alternatives) in enumerate(questions, start=1):
+        print(f"\nQuestion {num}:")
+        num_correct += ask_question(question, alternatives)
+
+    print(f"\nYou got {num_correct} correct out of {num} questions\n")
 
 def instructions():
     """
