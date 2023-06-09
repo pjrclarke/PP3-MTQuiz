@@ -1,4 +1,4 @@
-"In which Broadway musical does Jack sing 'There are giants in the sky'?" = [ 
+"In which Broadway musical does Jack sing 'There are giants in the sky'" = [ 
     "Into the Woods", "Cats", "Les Miserables", "Titanic: The Musical"
     ]
 
@@ -6,4 +6,40 @@
     "Miss Saigon", "South Pacific ", "Oh! What a Lovely War",
     "This is the Army"
     ]
- 
+
+ "What is the longest running musical in Broadway history?" = [
+    "Phantom of the Opera", "Les Miserables", "Pippin",
+    "the King and I"
+    ]
+
+"What is the name of Annie's dog in the musical Annie?" = [
+    "Sandy", "Shandy", "Rover",
+    "Champion"
+    ]
+
+ "What was the first broadway production from Disney?" = [
+    "Beauty and the Beast", "Lion King", "Mary Poppins",
+    "Aida"
+    ]
+
+ "Which rock opera did 'the Who' compose?" = [
+    "Tommy", "Rock of Ages", "Starlight Express",
+    "Rent"
+    ]
+
+"Who played Jonathan Larson in the musical film 'Tick, Tick... Boom!'?" = [
+    "Andrew Garfield", "Hugh Jackman", "Zac Efron", "James Cordon"
+]
+
+"Which musical tells the story of two friends names Elphaba and Galinda?" = [
+    "Wicked", "Frozen", "Chicago", "Rent"
+    ]
+
+"Where are the Sharks from in West Side Story?" = [
+    "Puerto Rico", "Argentina", "Cuba", "Mexico"
+    ]
+
+"Who voiced Queen Elsa in the musical film 'Frozen'?" = [
+    "Idina Menzel", "Kristen Bell", "kristin Chenoweth", "Lea Michele"
+    ]
+

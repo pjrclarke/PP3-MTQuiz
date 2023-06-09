@@ -16,7 +16,7 @@ QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
 username = ""
 POINTS = 0
 s = "\u272a"
-NUM_QUESTIONS_PER_QUIZ = 5
+NUM_QUESTIONS_PER_QUIZ = 30
 
 def clear():
     if os.name == 'nt':
@@ -116,12 +116,12 @@ def prepare_questions(questions, num_questions):
     return random.sample(list(questions.items()), k=num_questions)
 
 def get_answer(question, alternatives):
-    print(f"{question}?")
+    print(f"\n{question}?\n")
     labeled_alternatives = dict(zip(ascii_lowercase, alternatives))
     for label, alternative in labeled_alternatives.items():
         print(f"  {label}) {alternative}")
 
-    while (answer_label := input("\nChoice? \n")) not in labeled_alternatives:
+    while (answer_label := input("\nWhat's your answer?\n")) not in labeled_alternatives:
         print(f"Please answer one of {', '.join(labeled_alternatives)}")
 
     return labeled_alternatives[answer_label]
@@ -132,13 +132,13 @@ def ask_question(question, alternatives):
 
     answer = get_answer(question, ordered_alternatives)
     if answer == correct_answer:
-        print(Fore.LIGHTGREEN_EX + "\n\n Correct!\n\n"  + Fore.RESET)
+        print(Fore.LIGHTGREEN_EX + "\n\n Correct! Great Job!\n\n" + Fore.RESET)
         sleep(2)
-        clear ()
+        clear()
         return 1
     else:
         print(Fore.LIGHTRED_EX + f"\n\nNope! You really thought that {answer!r}",
-            "was the answer?\n\n" + Fore.RESET)
+            "was the answer?" + Fore.RESET)
         sleep(2)
         clear()
         return 0
