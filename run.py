@@ -16,7 +16,7 @@ QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
 username = ""
 POINTS = 0
 s = "\u272a"
-NUM_QUESTIONS_PER_QUIZ = 30
+NUM_QUESTIONS_PER_QUIZ = 15
 
 def clear():
     if os.name == 'nt':
@@ -154,6 +154,10 @@ def play():
         num_correct += ask_question(question, alternatives)
 
     print(f"\nYou got {num_correct} correct out of {num} questions\n")
+    print("Your total will be added onto the leaderboard, did you make,"
+        "the top 10?\n")
+    print(f"Didn't do well, {username}? Try again!\n")
+    main_menu_page()
 
 def instructions():
     """
