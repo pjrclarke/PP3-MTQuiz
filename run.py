@@ -2,6 +2,9 @@ import random
 from time import sleep
 import sys
 import os
+import gspread 
+from tabulate import tabulate
+from google.oauth2.service_account import Credentials
 from art import *
 from colorama import Fore, Back, Style
 import pathlib
@@ -10,6 +13,17 @@ try:
 except ModuleNotFoundError:
     import tomli as tomllib
 from string import ascii_lowercase
+
+SCOPE = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive.file",
+    "https://www.googleapis.com/auth/drive"
+    ]
+
+CREDS = Credentials.from_service_account_file("creds.json")
+SCOPED_CREDS = CREDS.with_scopes(SCOPE)
+GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
+SHEET = GSPREAD_CLIENT.open("musical_quiz")
 
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
@@ -68,13 +82,13 @@ def welcome_page():
 def main_menu_page():
 
     def menu_options():
-        print(f"Welcome {username}!\n")
+        print(f"You! Yes you, you're {username} right?!\n")
         print(
             f"Please select 1, 2, 3 or 4 from the Main Menu below.\n "
             )
         print(f"1) Play the Quiz.")
         print(f"2) Instructions.")
-        print(f"3) High Scores.")
+        print(f"3) Leaderboard.")
         print(f"4) Exit Game.\n")
 
     menu_options()
@@ -91,8 +105,8 @@ def main_menu_page():
                 instructions()
             elif user_option == 3:
                 clear()
-                print("3 selected")
-            elif user_option == 4:
+                leaderboard()
+            elif user_option == 4: 
                 clear()
                 print(f"\
                 Thanks for visiting the Musical Theater Quiz {username}!")
@@ -157,6 +171,7 @@ def play():
     print("Your total will be added onto the leaderboard, did you make,"
         "the top 10?\n")
     print(f"Didn't do well, {username}? Try again!\n")
+    update_leaderboard()
     main_menu_page()
 
 def instructions():
@@ -183,6 +198,32 @@ def instructions():
         main_menu_page()
     except SyntaxError:
         pass
+
+def leaderboard():
+    print(Fore.LIGHTGREEN_EX)
+    tprint("LEADERBOARD", font="rnd-medium\n")
+    print(Fore.RESET)
+    SHEET.sheet1.sort((2, 'des'))
+    row_id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    page = SHEET.sheet1.get_all_values()
+    print(tabulate(page[0:10], headers=["POSITION", "NAME", "POINTS"],
+                   tablefmt='fancy_grid', numalign="center", showindex=row_id))
+    try:
+        input("Press enter to return to the main menu")
+        clear()
+        main_menu_page()
+    except SyntaxError:
+        pass
+
+def update_leaderboard():
+    """
+    Update the worksheet with the user name and their final points.
+    """
+    data = USER_NAME, POINTS
+    print("Updating leaderboard...\n")
+    leaderboard_sheet = SHEET.worksheet("main")
+    leaderboard_sheet.append_row(data)
+    print("Leaderboard updated successfully.\n")
 
 def main():
     welcome_page()
