@@ -30,7 +30,7 @@ QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
 username = ""
 POINTS = 0
 s = "\u272a"
-NUM_QUESTIONS_PER_QUIZ = 15
+NUM_QUESTIONS_PER_QUIZ = 5
 
 def clear():
     if os.name == 'nt':
@@ -125,6 +125,23 @@ def main_menu_page():
             print(f"Not a valid entry!")
             print(f"Please enter 1, 2, 3 or 4!\n")
 
+def play():
+    questions = prepare_questions(
+        QUESTIONS, num_questions=NUM_QUESTIONS_PER_QUIZ
+    )
+
+    num_correct = 0
+    for num, (question, alternatives) in enumerate(questions, start=1):
+        print(f"\nQuestion {num}:")
+        num_correct += ask_question(question, alternatives)
+
+    print(f"\nYou got {num_correct} correct out of {num} questions\n")
+    print("Your total will be added onto the leaderboard, did you make,"
+        "the top 10?\n")
+    print(f"Didn't do well, {username}? Try again!\n")
+    update_leaderboard()
+    main_menu_page()
+
 def prepare_questions(questions, num_questions):
     num_questions = min(num_questions, len(questions))
     return random.sample(list(questions.items()), k=num_questions)
@@ -156,23 +173,6 @@ def ask_question(question, alternatives):
         sleep(2)
         clear()
         return 0
-
-def play():
-    questions = prepare_questions(
-        QUESTIONS, num_questions=NUM_QUESTIONS_PER_QUIZ
-    )
-
-    num_correct = 0
-    for num, (question, alternatives) in enumerate(questions, start=1):
-        print(f"\nQuestion {num}:")
-        num_correct += ask_question(question, alternatives)
-
-    print(f"\nYou got {num_correct} correct out of {num} questions\n")
-    print("Your total will be added onto the leaderboard, did you make,"
-        "the top 10?\n")
-    print(f"Didn't do well, {username}? Try again!\n")
-    update_leaderboard()
-    main_menu_page()
 
 def instructions():
     """
@@ -219,9 +219,9 @@ def update_leaderboard():
     """
     Update the worksheet with the user name and their final points.
     """
-    data = USER_NAME, POINTS
+    data = username, POINTS
     print("Updating leaderboard...\n")
-    leaderboard_sheet = SHEET.worksheet("main")
+    leaderboard_sheet = SHEET.worksheet("Sheet1")
     leaderboard_sheet.append_row(data)
     print("Leaderboard updated successfully.\n")
 
