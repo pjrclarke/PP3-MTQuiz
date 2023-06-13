@@ -24,9 +24,10 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("musical_quiz")
-
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
+
+
 username = ""
 POINTS = 0
 s = "\u272a"
@@ -37,7 +38,6 @@ def clear():
         os.system('cls')
     else:
         os.system('clear')
-
 
 def welcome_page():
     global username
@@ -109,7 +109,7 @@ def main_menu_page():
             elif user_option == 4: 
                 clear()
                 print(f"\
-                Thanks for visiting the Musical Theater Quiz {username}!")
+                Thanks for visiting the Musical Theater Quiz, {username}!")
                 sleep(1)
                 exit()
             else:
@@ -124,55 +124,6 @@ def main_menu_page():
             sleep(0.2)
             print(f"Not a valid entry!")
             print(f"Please enter 1, 2, 3 or 4!\n")
-
-def play():
-    questions = prepare_questions(
-        QUESTIONS, num_questions=NUM_QUESTIONS_PER_QUIZ
-    )
-
-    num_correct = 0
-    for num, (question, alternatives) in enumerate(questions, start=1):
-        print(f"\nQuestion {num}:")
-        num_correct += ask_question(question, alternatives)
-
-    print(f"\nYou got {num_correct} correct out of {num} questions\n")
-    print("Your total will be added onto the leaderboard, did you make,"
-        "the top 10?\n")
-    print(f"Didn't do well, {username}? Try again!\n")
-    update_leaderboard()
-    main_menu_page()
-
-def prepare_questions(questions, num_questions):
-    num_questions = min(num_questions, len(questions))
-    return random.sample(list(questions.items()), k=num_questions)
-
-def get_answer(question, alternatives):
-    print(f"\n{question}?\n")
-    labeled_alternatives = dict(zip(ascii_lowercase, alternatives))
-    for label, alternative in labeled_alternatives.items():
-        print(f"  {label}) {alternative}")
-
-    while (answer_label := input("\nWhat's your answer?\n")) not in labeled_alternatives:
-        print(f"Please answer one of {', '.join(labeled_alternatives)}")
-
-    return labeled_alternatives[answer_label]
-
-def ask_question(question, alternatives):
-    correct_answer = alternatives[0]
-    ordered_alternatives = random.sample(alternatives, k=len(alternatives))
-
-    answer = get_answer(question, ordered_alternatives)
-    if answer == correct_answer:
-        print(Fore.LIGHTGREEN_EX + "\n\n Correct! Great Job!\n\n" + Fore.RESET)
-        sleep(2)
-        clear()
-        return 1
-    else:
-        print(Fore.LIGHTRED_EX + f"\n\nNope! You really thought that {answer!r}",
-            "was the answer?" + Fore.RESET)
-        sleep(2)
-        clear()
-        return 0
 
 def instructions():
     """
@@ -206,8 +157,16 @@ def leaderboard():
     SHEET.sheet1.sort((2, 'des'))
     row_id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     page = SHEET.sheet1.get_all_values()
-    print(tabulate(page[0:10], headers=["POSITION", "NAME", "POINTS"],
-                   tablefmt='fancy_grid', numalign="center", showindex=row_id))
+    page_updated = []
+    index = 0
+    while index < 10:
+        try:
+            page_updated.append(page[index])
+        except:
+            page_updated.append('')
+        index +=1
+    print(tabulate(page_updated, headers=["POSITION", "NAME", "POINTS"],
+                tablefmt='double_grid', numalign="center", showindex = row_id))
     try:
         input("Press enter to return to the main menu")
         clear()
@@ -215,13 +174,88 @@ def leaderboard():
     except SyntaxError:
         pass
 
+def gameover():
+    while True:
+        try:
+            game_over_end = input(f"""Would you like to play again, {username}?\n
+Type Y for yes or Q to quit to the menu\n""")
+        except ValueError:
+            sleep(0.2)
+            print("You know that wasn't a correct option... Try again.")
+        if game_over_end == "q":
+            clear()
+            main_menu_page()
+        elif game_over_end == "y":
+            clear()
+            play()
+        else: 
+            sleep(0.2)
+            print("You know that wasn't a correct option... Try again.")
+
+def play():
+    global POINTS
+    questions = prepare_questions (
+        QUESTIONS, num_questions = NUM_QUESTIONS_PER_QUIZ)
+    POINTS = 0
+    num_correct = 0
+    for num, (question, alternatives) in enumerate(questions, start=1):
+        print(f"\nQuestion {num}:")
+        print(f"\n{question}\n")
+        correct_answer = alternatives[0]
+        labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
+        for label, alternative in labeled_alternatives.items():
+            print(f"{label.upper()}){alternative}")
+        if num_correct == 20:
+            clear()
+            print(f"Well done {username}!")
+            print(f"You scored {POINTS} points by answering all")
+            print(f"{num_correct} questions correctly.\n")
+            update_leaderboard()
+            game_over()
+            return
+        
+        while (answer_label := input("\nWhat's your answer?\n")) not in labeled_alternatives:
+            print(f"Please answer one of {', '.join(labeled_alternatives)}")
+            if answer_label == "q":
+                clear()
+                main_menu_page()
+            else:
+                clear()
+                print(f"\nNot a valid option\n")
+                print(f"Please enter {','.join(labeled_alternatives).upper()}",
+                        "or Q to quit to the main menu")
+        answer = labeled_alternatives[answer_label]
+        if answer == correct_answer:
+            POINTS += 1
+            print(Fore.LIGHTGREEN_EX + "\n\n Correct!\n\n" + Fore.RESET)
+            print(f"Good Job, {username}. You have {POINTS} points.\n")
+            sleep(2)
+            clear()      
+        elif answer != correct_answer and num_correct == 0:
+            clear()
+            print(Fore.LIGHTRED_EX)
+            tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
+            print(Fore.RESET)
+            print(f"Good effort, {username}.\n\n")
+            print(f"You got {POINTS} points.\n")
+            print("Your score will be added to the leaderboard.\n")
+            update_leaderboard()
+            gameover()
+        else:
+            update_leaderboard()
+            gameover()
+
+def prepare_questions(questions, num_questions):
+    num_questions = min(num_questions, len(QUESTIONS))
+    return random.sample(list(QUESTIONS.items()), k=num_questions)
+
 def update_leaderboard():
     """
     Update the worksheet with the user name and their final points.
     """
     data = username, POINTS
     print("Updating leaderboard...\n")
-    leaderboard_sheet = SHEET.worksheet("Sheet1")
+    leaderboard_sheet = SHEET.worksheet("leaderboard")
     leaderboard_sheet.append_row(data)
     print("Leaderboard updated successfully.\n")
 
