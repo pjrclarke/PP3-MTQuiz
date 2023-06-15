@@ -50,11 +50,9 @@ def welcome_page():
     """
     global USERNAME
     print(Fore.LIGHTRED_EX + Style.BRIGHT)
-    tprint("Musical", font="small")
+    tprint("Musical Theater", font="cybermedium")
     print(Fore.LIGHTBLUE_EX + Style.BRIGHT)
-    tprint("Theater", font="small")
-    print(Fore.LIGHTMAGENTA_EX + Style.BRIGHT)
-    tprint("Quiz", font="small")
+    tprint("{:>25}".format("Quiz"), font="medium")
     print(Fore.RESET + Style.RESET_ALL)
     print("Welcome to the Musical Theater Quiz!")
     while True:
@@ -104,7 +102,7 @@ def main_menu_page():
             elif user_option == 4: 
                 clear()
                 print(f"\
-                Thanks for visiting the Musical Theater Quiz, {USERNAME}!")
+                \n\n\nThanks for visiting the Musical Theater Quiz, {USERNAME}!\n\n")
                 sleep(1)
                 exit()
             else:
@@ -229,8 +227,9 @@ def play():
                 clear()
                 main_menu_page()
             else:
-                clear()
-                print(f"\nNot a valid option\n")
+                print(Fore.LIGHTRED_EX)
+                print(f"Not a valid option")
+                print(Fore.RESET)
                 print(f"Please enter {','.join(labeled_alternatives).upper()}",
                         "or Q to quit to the main menu")
         answer = labeled_alternatives[answer_label]
@@ -238,7 +237,7 @@ def play():
             POINTS += 1
             print(Fore.LIGHTGREEN_EX + "\n Correct!\n" + Fore.RESET)
             print(f"Good Job, {USERNAME}!") 
-            print("You have " + Fore.GREEN + f"{POINTS}" + Fore.RESET + " points.\n\n")
+            print("You have " + Fore.GREEN + f"{POINTS}" + Fore.RESET + " points.")
             sleep(2)
             clear()      
         elif answer != correct_answer and num_correct == 0:
@@ -246,7 +245,7 @@ def play():
             print(Fore.LIGHTRED_EX)
             tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
             print(Fore.RESET)
-            print(f"Good effort, {USERNAME}.\n\n")
+            print(f"Good effort, {USERNAME}.\n")
             print(f"You got {POINTS} points.\n")
             print("Your score will be added to the leaderboard.\n")
             update_leaderboard()
