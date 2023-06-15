@@ -49,20 +49,13 @@ def welcome_page():
     The page that greets the user, promting to enter their username
     """
     global USERNAME
-    print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
     print(Fore.LIGHTRED_EX + Style.BRIGHT)
-    tprint("Musical", font="small" +
-        Fore.RESET + Style.RESET_ALL)
+    tprint("Musical", font="small")
     print(Fore.LIGHTBLUE_EX + Style.BRIGHT)
-    tprint("Theater", font="small" +
-        Fore.RESET + Style.RESET_ALL)
+    tprint("Theater", font="small")
     print(Fore.LIGHTMAGENTA_EX + Style.BRIGHT)
-    tprint("Quiz", font="small" +
-        Fore.RESET + Style.RESET_ALL)
-    print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
-    print(Style.RESET_ALL + Fore.RESET)
+    tprint("Quiz", font="small")
+    print(Fore.RESET + Style.RESET_ALL)
     print("Welcome to the Musical Theater Quiz!")
     while True:
         try:
@@ -157,7 +150,7 @@ def leaderboard():
     users to see if they reach the top 10
     """
     print(Fore.LIGHTGREEN_EX)
-    tprint("LEADERBOARD", font="small")
+    tprint("Leaderboard", font="small")
     SHEET.sheet1.sort((2, 'des'))
     row_id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     page = SHEET.sheet1.get_all_values()
