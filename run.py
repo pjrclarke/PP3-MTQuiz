@@ -53,24 +53,21 @@ def welcome_page():
 	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
 	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
     print(Fore.LIGHTRED_EX + Style.BRIGHT)
-    tprint("{:>10}".format("Musical"), font="rnd-medium\n" +
+    tprint("{:>10}".format("Musical"), font="rnd-small" +
         Fore.RESET + Style.RESET_ALL)
     print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, + Fore.RESET)
     print(Fore.LIGHTBLUE_EX + Style.BRIGHT)
-    tprint("{:>15}".format("Theater"), font="rnd-medium\n" +
+    tprint("{:>15}".format("Theater"), font="rnd-small" +
         Fore.RESET + Style.RESET_ALL)
     print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, + Fore.RESET)
     print(Fore.LIGHTMAGENTA_EX + Style.BRIGHT)
-    tprint("{:>20}".format("quiz"), font="rnd-medium\n" +
+    tprint("{:>20}".format("quiz"), font="rnd-small" +
         Fore.RESET + Style.RESET_ALL)
     print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
-    print(Style.RESET_ALL + Fore.RESET + "\n")
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, + Fore.RESET)
+    print(Style.RESET_ALL + Fore.RESET)
     print("Welcome to the Musical Theater Quiz!\n")
     while True:
         try:
