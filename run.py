@@ -50,28 +50,23 @@ def welcome_page():
     """
     global USERNAME
     print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
 	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
     print(Fore.LIGHTRED_EX + Style.BRIGHT)
-    tprint("{:>10}".format("Musical"), font="rnd-small" +
+    tprint("Musical", font="small" +
         Fore.RESET + Style.RESET_ALL)
-    print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, + Fore.RESET)
     print(Fore.LIGHTBLUE_EX + Style.BRIGHT)
-    tprint("{:>15}".format("Theater"), font="rnd-small" +
+    tprint("Theater", font="small" +
         Fore.RESET + Style.RESET_ALL)
-    print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, + Fore.RESET)
     print(Fore.LIGHTMAGENTA_EX + Style.BRIGHT)
-    tprint("{:>20}".format("quiz"), font="rnd-small" +
+    tprint("Quiz", font="small" +
         Fore.RESET + Style.RESET_ALL)
     print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
-	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, + Fore.RESET)
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
     print(Style.RESET_ALL + Fore.RESET)
-    print("Welcome to the Musical Theater Quiz!\n")
+    print("Welcome to the Musical Theater Quiz!")
     while True:
         try:
-            USERNAME = input("Before we start, please enter your name:\n\n")
+            USERNAME = input("Before we start, please enter your name:\n")
         except ValueError:
             clear()
             print(f"\n{USERNAME} is invalid entry!")
@@ -138,23 +133,19 @@ def instructions():
     menu.
     """
     print(Fore.LIGHTGREEN_EX)
-    tprint("{:>20}".format("Instructions"), font="rnd-medium\n")
-    print(Fore.RESET)
-    print(Fore.LIGHTYELLOW_EX)
-    print("There are over 50 questions to this quiz... How many can you get!?\n")
+    tprint("Instructions", font="small")
     print(Fore.RESET)
     print("To play the game, you have to try and answer as many questions correctly")
-    print("as you can.\n")
-    print("To select your answer, enter the corresponding letter and press enter.\n")
-    print("Every correct answer is worth one point\n\n")
-    print(Fore.LIGHTRED_EX + "If you get a question wrong your game is over.\n\n" + Fore.RESET)
-    print("Your points are recorded and uploaded to the leaderboard.\n")
+    print("as you can. To select your answer, enter the corresponding")
+    print("letter and press enter. Every correct answer is worth one point\n")
+    print(Fore.LIGHTRED_EX + "If you get a question wrong your game is over.\n" + Fore.RESET)
+    print("Your points are recorded and uploaded to the leaderboard.")
     print("If you've done well enough, you could be in the top 10 and see your")
-    print("name on the leaderboard.\n")
+    print("name on the leaderboard.")
     print("**To quit the game during play, press the letter Q to")
     print("return to main menu**\n")
     try:
-        input(f"\nWhen you're ready {USERNAME}, press Enter to go back to main menu...\n")
+        input(f"When you're ready {USERNAME}, press Enter to go back to main menu...")
         clear()
         main_menu_page()
     except SyntaxError:
@@ -166,9 +157,7 @@ def leaderboard():
     users to see if they reach the top 10
     """
     print(Fore.LIGHTGREEN_EX)
-    tprint("LEADERBOARD", font="rnd-medium\n")
-    print(Fore.RESET)
-    print(Fore.LIGHTYELLOW_EX)
+    tprint("LEADERBOARD", font="small")
     SHEET.sheet1.sort((2, 'des'))
     row_id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     page = SHEET.sheet1.get_all_values()
@@ -183,8 +172,7 @@ def leaderboard():
     print(tabulate(page_updated, headers=["POSITION", "NAME", "POINTS"],
                 tablefmt='double_grid', numalign="center", showindex = row_id))
     try:
-        print(Back.RESET + Fore.RESET)
-        input("\n\nPress enter to return to the main menu\n\n")
+        input(Fore.RESET + "Press enter to return to the main menu")
         clear()
         main_menu_page()
     except SyntaxError:
