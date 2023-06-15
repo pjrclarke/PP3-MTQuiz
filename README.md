@@ -1,35 +1,58 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![title](assets/readmeimages/title.png)
 
-Welcome,
+Musical Theatre Quiz is a simple multiple choice quiz that offers the user a fun and exciting way of testing their knowledge of the musical arts. 
+<br>
+Get a question right? you get a point! Get a question wrong and it's all over! 
+How many points can you get? Find out in [Musical Theatre Quiz](https://musical-theater-quiz-c67f89732c69.herokuapp.com/).
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+![mockup](assets/readmeimages/mockup.jpg)
 
-## Reminders
+# Contents
+* [**User Experience**](<#user-experience>)
+    * [User Stories](<#user-stories>)
+    * [Wireframes](<#wireframes>)
+    * [Flow Chart](<#flow-charts>)
+    * [Design Choices](#design-choices)
+        * [Typography](#typography)
+        * [Colour Choices](#colour-choices)
+* [**The Quiz**](<#the-quiz>)
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+# User Experience #
 
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
----
-
-Happy coding!
+## User Stories ##
+- As a user I would like an easy interface with clear instruction.
+- As a user I would like the quiz to be difficult but fun.
+- As a user I would like to be able to see the leaderboard. 
+- As a user I would like to know my score and see how many points I can get.
 
 
-Sending infor to leaderboard but it wasn't returning. 
+
+## Wireframes ##
+The initial wireframes were made on [Balsamiq](https://www.balsamiq.cloud). These wireframes of the quiz, show a somewhat less thought out design but shows how much I've built upon to make sure the UX is stronger.
+<br>
+
+![wireframes](assets/readmeimages/wireframes.png)
+
+I wanted to make this a really easy interface with little distraction to ensure the user has the best experience. 
+
+## Flow Charts ##
+I made the flow chart using [Lucid Chart](https://www.lucidchart.com). This again shows a little more thought out process including different difficulties which would be offered in a future build. It also details how only 10 questions would be shown, I decided in terms of a competitive user experience, its better to have one mode and compete for that top spot. 
+
+![lucidchart](assets/readmeimages/PP3.png)
+
+
+## Design Choices ##
+
+### Typograghy ###
+Although technically not typography, the font art I used within my project was imported using [art](https://pypi.org/project/art/). I wanted the main screen to stand out and this can be seen by all headings within the quiz game. 
+
+![font](assets/readmeimages/title.png)
+
+### Colour Choices ###
+The colours I've chosen were inspired by the french flag. Mainly because when thinking of a standout group of colours for musical theatre, the french flag is such a prominant option due to the musical Les Miserables and it helps the screen pop out too. So I used the Linear gradient on [Gradient CSS](http://www.gradientcss.com/) to help me achieve this. 
+
+![Gradient backdrop](assets/readmeimages/gradientcss.png)
+
+I also replicated this in the font colour choices for the most part of the quiz. 
+
+# The Quiz #
