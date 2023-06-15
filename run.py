@@ -27,62 +27,72 @@ SHEET = GSPREAD_CLIENT.open("musical_quiz")
 QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
 
-
-username = ""
+"""
+GLOBAL FUNCTIONS
+"""
+USERNAME = ""
 POINTS = 0
-s = "\u272a"
-NUM_QUESTIONS_PER_QUIZ = 5
+S = "\u272a"
+NUM_QUESTIONS_PER_QUIZ = 53
 
 def clear():
+    """
+    Clears the screen
+    """
     if os.name == 'nt':
         os.system('cls')
     else:
         os.system('clear')
 
 def welcome_page():
-    global username
-    print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
-            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
-            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
+    """
+    The page that greets the user, promting to enter their username
+    """
+    global USERNAME
+    print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
     print(Fore.LIGHTRED_EX + Style.BRIGHT)
     tprint("{:>10}".format("Musical"), font="rnd-medium\n" +
         Fore.RESET + Style.RESET_ALL)
-    print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
-            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
-            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
+    print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
     print(Fore.LIGHTBLUE_EX + Style.BRIGHT)
     tprint("{:>15}".format("Theater"), font="rnd-medium\n" +
         Fore.RESET + Style.RESET_ALL)
-    print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
-            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
-            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
+    print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
     print(Fore.LIGHTMAGENTA_EX + Style.BRIGHT)
     tprint("{:>20}".format("quiz"), font="rnd-medium\n" +
         Fore.RESET + Style.RESET_ALL)
-    print(Fore.LIGHTYELLOW_EX + s, s, s, s, s, s, s, s,
-            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s,
-            s, s, s, s, s, s, s, s, s, s, s, s, s, s, s, s + Fore.RESET)
+    print(Fore.LIGHTYELLOW_EX + S, S, S, S, S, S, S, S,
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, 
+	    S, S, S, S, S, S, S, S, S, S, S, S, S, S, S, S + Fore.RESET)
     print(Style.RESET_ALL + Fore.RESET + "\n")
     print("Welcome to the Musical Theater Quiz!\n")
     while True:
         try:
-            username = input("Before we start, please enter your name:\n\n")
+            USERNAME = input("Before we start, please enter your name:\n\n")
         except ValueError:
             clear()
-            print(f"\n{username} is invalid entry!")
+            print(f"\n{USERNAME} is invalid entry!")
             print("Username must be 3 - 10 characters\n")
-        if (len(username) >= 3 and len(username) <= 10 and
-                username.count("  ") <= 0):
+        if (len(USERNAME) >= 3 and len(USERNAME) <= 10 and
+                USERNAME.count("  ") <= 0):
             break
         else:
             clear()
-            print(f"\n{username} is invalid entry!")
+            print(f"\n{USERNAME} is invalid entry!")
             print("Username must be 3 - 10 characters long\n")
 
 def main_menu_page():
-
+    """
+    The main menu giving the user options to select.
+    """
     def menu_options():
-        print(f"You! Yes you, you're {username} right?!\n")
+        print(f"You! Yes you, you're {USERNAME} right?!\n")
         print(
             f"Please select 1, 2, 3 or 4 from the Main Menu below.\n "
             )
@@ -96,7 +106,7 @@ def main_menu_page():
         user_option = 0
         try:
             user_option = (int(input(f"What would you like to do,\
- {username}?\n")))
+ {USERNAME}?\n")))
             if user_option == 1:
                 clear()
                 play()
@@ -109,7 +119,7 @@ def main_menu_page():
             elif user_option == 4: 
                 clear()
                 print(f"\
-                Thanks for visiting the Musical Theater Quiz, {username}!")
+                Thanks for visiting the Musical Theater Quiz, {USERNAME}!")
                 sleep(1)
                 exit()
             else:
@@ -133,27 +143,35 @@ def instructions():
     print(Fore.LIGHTGREEN_EX)
     tprint("{:>20}".format("Instructions"), font="rnd-medium\n")
     print(Fore.RESET)
-    print("To play the game, all you have to do is answer all")
-    print("30 questions correctly.\n")
-    print("To select your answer, enter corresponding number and press enter.")
-    print("Every correct answer is worth 1 point.\n\n")
+    print(Fore.LIGHTYELLOW_EX)
+    print("There are over 50 questions to this quiz... How many can you get!?\n")
+    print(Fore.RESET)
+    print("To play the game, you have to try and answer as many questions correctly")
+    print("as you can.\n")
+    print("To select your answer, enter the corresponding letter and press enter.\n")
+    print("Every correct answer is worth one point\n\n")
     print(Fore.LIGHTRED_EX + "If you get a question wrong your game is over.\n\n" + Fore.RESET)
     print("Your points are recorded and uploaded to the leaderboard.\n")
     print("If you've done well enough, you could be in the top 10 and see your")
     print("name on the leaderboard.\n")
-    print("To quit the game during play, press the letter Q to")
-    print("return to main menu\n")
+    print("**To quit the game during play, press the letter Q to")
+    print("return to main menu**\n")
     try:
-        input("Press Enter to go back to main menu...\n")
+        input(f"\nWhen you're ready {USERNAME}, press Enter to go back to main menu...\n")
         clear()
         main_menu_page()
     except SyntaxError:
         pass
 
 def leaderboard():
+    """
+    Pulls data from a googlesheet and displays this as a leaderboard for 
+    users to see if they reach the top 10
+    """
     print(Fore.LIGHTGREEN_EX)
     tprint("LEADERBOARD", font="rnd-medium\n")
     print(Fore.RESET)
+    print(Fore.LIGHTYELLOW_EX)
     SHEET.sheet1.sort((2, 'des'))
     row_id = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     page = SHEET.sheet1.get_all_values()
@@ -168,16 +186,21 @@ def leaderboard():
     print(tabulate(page_updated, headers=["POSITION", "NAME", "POINTS"],
                 tablefmt='double_grid', numalign="center", showindex = row_id))
     try:
-        input("Press enter to return to the main menu")
+        print(Back.RESET + Fore.RESET)
+        input("\n\nPress enter to return to the main menu\n\n")
         clear()
         main_menu_page()
     except SyntaxError:
         pass
 
 def gameover():
+    """
+    Function when the game ends, gives users the option to play again or 
+    go back to the main menu. Functions here for errors also. 
+    """
     while True:
         try:
-            game_over_end = input(f"""Would you like to play again, {username}?\n
+            game_over_end = input(f"""Would you like to play again, {USERNAME}?\n
 Type Y for yes or Q to quit to the menu\n""")
         except ValueError:
             sleep(0.2)
@@ -193,6 +216,14 @@ Type Y for yes or Q to quit to the menu\n""")
             print("You know that wasn't a correct option... Try again.")
 
 def play():
+    """
+    The main quiz game section.
+    This houses the functions for; 
+    - Randomising the questions that are housed in the questions.toml file.
+    - What happens when the user guesses correctly.
+    - What happens when the user selects a wrong option.
+    - How many points are awarded and displays this on screen. 
+    """
     global POINTS
     questions = prepare_questions (
         QUESTIONS, num_questions = NUM_QUESTIONS_PER_QUIZ)
@@ -205,11 +236,11 @@ def play():
         labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
         for label, alternative in labeled_alternatives.items():
             print(f"{label.upper()}){alternative}")
-        if num_correct == 20:
+        if num_correct >= 50:
             clear()
-            print(f"Well done {username}!")
-            print(f"You scored {POINTS} points by answering all")
-            print(f"{num_correct} questions correctly.\n")
+            print(f"Well done {USERNAME}!")
+            print(f"You got {POINTS} points!!")
+            print("You truly are a musical knowledge genius!")
             update_leaderboard()
             game_over()
             return
@@ -227,8 +258,9 @@ def play():
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:
             POINTS += 1
-            print(Fore.LIGHTGREEN_EX + "\n\n Correct!\n\n" + Fore.RESET)
-            print(f"Good Job, {username}. You have {POINTS} points.\n")
+            print(Fore.LIGHTGREEN_EX + "\n Correct!\n" + Fore.RESET)
+            print(f"Good Job, {USERNAME}!") 
+            print("You have " + Fore.GREEN + f"{POINTS}" + Fore.RESET + " points.\n\n")
             sleep(2)
             clear()      
         elif answer != correct_answer and num_correct == 0:
@@ -236,7 +268,7 @@ def play():
             print(Fore.LIGHTRED_EX)
             tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
             print(Fore.RESET)
-            print(f"Good effort, {username}.\n\n")
+            print(f"Good effort, {USERNAME}.\n\n")
             print(f"You got {POINTS} points.\n")
             print("Your score will be added to the leaderboard.\n")
             update_leaderboard()
@@ -251,15 +283,18 @@ def prepare_questions(questions, num_questions):
 
 def update_leaderboard():
     """
-    Update the worksheet with the user name and their final points.
+    Update the googlesheet with the username and their points.
     """
-    data = username, POINTS
+    data = USERNAME, POINTS
     print("Updating leaderboard...\n")
     leaderboard_sheet = SHEET.worksheet("leaderboard")
     leaderboard_sheet.append_row(data)
     print("Leaderboard updated successfully.\n")
 
 def main():
+    """
+    Main functions that run to make the game start
+    """
     welcome_page()
     clear()
     main_menu_page()
