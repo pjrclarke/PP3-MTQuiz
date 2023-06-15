@@ -49,11 +49,11 @@ def welcome_page():
     The page that greets the user, promting to enter their username
     """
     global USERNAME
-    print(Fore.LIGHTRED_EX + Style.BRIGHT)
-    tprint("Musical Theater", font="cybermedium")
-    print(Fore.LIGHTBLUE_EX + Style.BRIGHT)
+    print(Fore.LIGHTRED_EX)
+    tprint("Musical Theater", font="small")
+    print(Fore.LIGHTBLUE_EX)
     tprint("{:>25}".format("Quiz"), font="medium")
-    print(Fore.RESET + Style.RESET_ALL)
+    print(Fore.RESET)
     print("Welcome to the Musical Theater Quiz!")
     while True:
         try:
