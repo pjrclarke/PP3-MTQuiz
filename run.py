@@ -32,7 +32,7 @@ GLOBAL FUNCTIONS
 """
 USERNAME = ""
 POINTS = 0
-NUM_QUESTIONS_PER_QUIZ = 53
+NUM_QUESTIONS_PER_QUIZ = 5
 
 
 def clear():
@@ -218,7 +218,7 @@ def play():
         labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
         for label, alternative in labeled_alternatives.items():
             print(f"{label.upper()}){alternative}")
-        if num_correct >= 50:
+        if num_correct >= 5:
             clear()
             print(f"Well done {USERNAME}!")
             print(f"You got {POINTS} points!!")

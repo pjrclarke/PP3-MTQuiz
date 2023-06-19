@@ -56,3 +56,50 @@ The colours I've chosen were inspired by the french flag. Mainly because when th
 I also replicated this in the font colour choices for the most part of the quiz. 
 
 # The Quiz #
+
+## Main Page ##
+the Quiz main screen is again inspired by the colours of the french flag (Les Miserables) and gives the user the option to enter their username, they can user characters and numbers. 
+<br>
+
+![Main Page](assets/readmeimages/welcomepage.png)
+
+If the user enters a username that is less than 3 or more than 10 characters long, they will receive the following message;
+![username error](assets/readmeimages/usernameerror.png)
+
+Once they user has put in the correct username charachter count, they are welcomed by the main menu;
+
+![Main menu](assets/readmeimages/mainmenu.png)
+
+The user is then given 4 options.
+- 1) [Play the Quiz](<#play-the-quiz>)
+- 2) Instructions
+- 3) Leaderboard
+- 4) Exit Game
+
+## Play the Quiz ##
+
+When the user select option one, they will be pushed into the quiz.
+
+![Quiz screen](assets/readmeimages/quizmain.png)
+
+The user can then select 1,2,3 or 4 to choose their answer. If they guess correctly;
+
+![Quiz screen](assets/readmeimages/correctanswer.png)
+
+A point is added onto their tally and they continue onto the next question. 
+
+If they guess incorrectly;
+
+![Quiz screen](assets/readmeimages/incorrectanswer.png)
+
+They are notified that they are incorrect, are supplied with the correct answer and then shown the game over screen;
+
+![Quiz screen](assets/readmeimages/gameoverpage.png)
+
+You only have oen life in this quiz. 
+
+Furthermore, if the user gives an invalid option;
+
+![Quiz screen](assets/readmeimages/quizmaininvalidoption.png)
+
+If the user answers all 50 questions correctly (for the purposes of the readme, I reduced the amount of questions to 10); 
