@@ -227,7 +227,6 @@ def play():
             game_over()
             return
         while (answer_label := input("\nWhat's your answer?\n")) not in labeled_alternatives:
-            print(f"Please answer one of {', '.join(labeled_alternatives)}")
             if answer_label == "q":
                 clear()
                 main_menu_page()
@@ -235,7 +234,7 @@ def play():
                 print(Fore.LIGHTRED_EX)
                 print(f"Not a valid option")
                 print(Fore.RESET)
-                print(f"Please enter {','.join(labeled_alternatives).upper()}",
+                print(f"Please enter {','.join(labeled_alternatives)}",
                 "or Q to quit to the main menu")
         answer = labeled_alternatives[answer_label]
         if answer == correct_answer:
@@ -246,6 +245,10 @@ def play():
             sleep(2)
             clear()
         elif answer != correct_answer and num_correct == 0:
+            print(Fore.RED + "Incorrect!" + Fore.RESET) 
+            print("The correct answer was",
+            Fore.LIGHTGREEN_EX + f"{correct_answer}!" + Fore.RESET)
+            sleep(2)
             clear()
             print(Fore.LIGHTRED_EX)
             tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
