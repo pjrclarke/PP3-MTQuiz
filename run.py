@@ -20,6 +20,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
     ]
 
+
 CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -32,7 +33,7 @@ GLOBAL FUNCTIONS
 """
 USERNAME = ""
 POINTS = 0
-NUM_QUESTIONS_PER_QUIZ = 5
+NUM_QUESTIONS_PER_QUIZ = 53
 
 
 def clear():
@@ -218,7 +219,7 @@ def play():
         labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
         for label, alternative in labeled_alternatives.items():
             print(f"{label.upper()}){alternative}")
-        if num_correct >= 5:
+        if num_correct >= 50:
             clear()
             print(f"Well done {USERNAME}!")
             print(f"You got {POINTS} points!!")
