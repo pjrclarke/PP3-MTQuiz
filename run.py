@@ -248,7 +248,7 @@ def play():
             print(Fore.RED + "Incorrect!" + Fore.RESET) 
             print("The correct answer was",
             Fore.LIGHTGREEN_EX + f"{correct_answer}!" + Fore.RESET)
-            sleep(2)
+            sleep(3)
             clear()
             print(Fore.LIGHTRED_EX)
             tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
