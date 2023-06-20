@@ -2,6 +2,7 @@ import random
 from time import sleep
 import sys
 import os
+import re
 import gspread
 from tabulate import tabulate
 from google.oauth2.service_account import Credentials
@@ -57,19 +58,18 @@ def welcome_page():
     print(Fore.RESET)
     print("Welcome to the Musical Theater Quiz!")
     while True:
-        try:
-            USERNAME = input("Before we start, please enter your name:\n")
-        except ValueError:
+        USERNAME = input("Before we start, please enter your name:\n")
+        if not re.match("^[a-zA-Z_]*$", USERNAME):
             clear()
-            print(f"\n{USERNAME} is invalid entry!")
-            print("Username must be 3 - 10 characters\n")
-        if (len(USERNAME) >= 3 and len(USERNAME) <= 10 and
-                USERNAME.count("  ") <= 0):
-            break
-        else:
+            print(f"\n'{USERNAME}' contains special characters or numbers.\n")
+            print("Your username should only contain letters and underscores.\n")
+        elif len(USERNAME) < 3 or len(USERNAME) > 10:
             clear()
             print(f"\n{USERNAME} is either too small or too big.")
-            print("Username must be 3 - 10 characters long\n")
+            print("Username must be 3 - 10 characters long.\n")
+        else:
+            break
+    return USERNAME
 
 
 def main_menu_page():
@@ -105,6 +105,7 @@ def main_menu_page():
                 clear()
                 print(f"\
                 \nThanks for visiting the Musical Theater Quiz, {USERNAME}!\n")
+                print("Come back soon!\n\n")
                 sleep(1)
                 sys.exit()
             else:
@@ -161,7 +162,7 @@ def leaderboard():
     while index < 10:
         try:
             page_updated.append(page[index])
-        except:
+        except :
             page_updated.append('')
         index += 1
     print(tabulate(page_updated, headers=["POSITION", "NAME", "POINTS"],
@@ -200,12 +201,23 @@ Type Y for yes or Q to quit to the menu\n""")
 def play():
     """
     The main quiz game section.
+
     This houses the functions for;
+
     - Randomising the questions that are housed in the questions.toml file.
     - What happens when the user guesses correctly.
     - What happens when the user selects a wrong option.
     - How many points are awarded and displays this on screen.
+    
     """
+    clear()
+    print(f"Let's start the quiz, {USERNAME}.\n")
+    print("Answer as many questions as you can.\n") 
+    print("Each correct answer earns you one point.\n")
+    print("Type 'Q' to quit the game and return to the main menu.\n")
+    print("The Quiz will start shortly. Good Luck!")
+    sleep(5)
+    clear()
     global POINTS
     questions = prepare_questions(
         QUESTIONS, num_questions=NUM_QUESTIONS_PER_QUIZ)
