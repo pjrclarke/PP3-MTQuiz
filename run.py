@@ -3,7 +3,6 @@ from time import sleep
 import sys
 import os
 import re
-import time
 import gspread
 from tabulate import tabulate
 from google.oauth2.service_account import Credentials
@@ -106,7 +105,7 @@ def main_menu_page():
                 clear()
                 print(f"\
                 \nThanks for visiting the Musical Theater Quiz, {USERNAME}!\n")
-                print("Come back soon!\n\n")
+                print("Come back soon!")
                 sleep(1)
                 sys.exit()
             else:
@@ -131,13 +130,13 @@ def instructions():
     print(Fore.LIGHTBLUE_EX)
     tprint("Instructions", font="small")
     print(Fore.RESET)
-    print("To play, you have to try & answer as many questions correctly")
-    print("as you can. To select your answer, enter the corresponding")
-    print("letter and press enter. Every correct answer is worth one point\n")
+    print("To play, you have to try & answer questions correctly")
+    print("To select your answer, enter the corresponding letter")
+    print("and then press Enter. Every correct answer is worth one point.\n")
     print(Fore.LIGHTRED_EX+"Incorrect answer? GAME OVER.\n"+Fore.RESET)
     print("Your points are recorded and uploaded to the leaderboard.")
     print("If you scored high enough, you could be in the top 10 and see your")
-    print("name on the leaderboard.")
+    print("name on the leaderboard.\n")
     print("**To quit the game during play, press the letter Q to")
     print("return to main menu**\n")
     try:
@@ -184,7 +183,7 @@ def gameover():
     while True:
         try:
             game_over_end = input(f"""Play again, {USERNAME}?\n
-Type Y for yes or Q to quit to the menu\n""")
+Type y for yes or q to quit to the menu\n""")
         except ValueError:
             sleep(0.2)
             print("You know that wasn't a correct option... Try again.")
@@ -224,16 +223,11 @@ def play():
         QUESTIONS, num_questions=NUM_QUESTIONS_PER_QUIZ)
     POINTS = 0
     num_correct = 0
-    time_limit = 10 
     for num, (question, alternatives) in enumerate(questions, start=1):
         print(f"\nQuestion {num}:")
         print(f"\n{question}\n")
         correct_answer = alternatives[0]
         labeled_alternatives = dict(zip(ascii_lowercase, sorted(alternatives)))
-
-        # Start the timer
-        start_time = time.time()
-
         for label, alternative in labeled_alternatives.items():
             print(f"{label.upper()}){alternative}")
         if num_correct == 50:
@@ -244,57 +238,41 @@ def play():
             update_leaderboard()
             game_over()
             return
-
-        while True:
-            # Calculate the remaining time
-            elapsed_time = time.time() - start_time
-            remaining_time = time_limit - elapsed_time
-
-            if remaining_time <= 0:
-                print(Fore.LIGHTRED_EX)
-                print("Time's up!")
-                print(Fore.RESET)
-                sleep(2)
-                gameover()
-                break
-            print(f"\nRemaining time: {int(remaining_time)} seconds")
-
-            answer_label = input("\nWhat's your answer?\n").lower()
-
+        while (answer_label := input("\nWhat's your answer?\n")) not in labeled_alternatives:
             if answer_label == "q":
                 clear()
                 main_menu_page()
-            elif answer_label not in labeled_alternatives:
+            else:
                 print(Fore.LIGHTRED_EX)
                 print(f"Not a valid option")
                 print(Fore.RESET)
                 print(f"Please enter {','.join(labeled_alternatives)}",
                 "or Q to quit to the main menu")
-            
-            else:
-                answer = labeled_alternatives[answer_label]
-                if answer == correct_answer:
-                    POINTS += 1
-                    print(Fore.LIGHTGREEN_EX + "\n Correct!\n" + Fore.RESET)
-                    print(f"Good Job, {USERNAME}!")
-                    print("You have "+Fore.GREEN+f"{POINTS}"+Fore.RESET+" points.")
-                    sleep(2)
-                    clear()
-                    break
-                else:
-                    print(Fore.RED + "Incorrect!" + Fore.RESET)
-                    print("The correct answer was", Fore.LIGHTGREEN_EX + f"{correct_answer}!" + Fore.RESET)
-                    sleep(3)
-                    clear()
-                    print(Fore.LIGHTRED_EX)
-                    tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
-                    print(Fore.RESET)
-                    print(f"Good effort, {USERNAME}.\n")
-                    print(f"You got {POINTS} points.\n")
-                    print("Your score will be added to the leaderboard.\n")
-                    update_leaderboard()
-                    gameover()
-                    return
+        answer = labeled_alternatives[answer_label]
+        if answer == correct_answer:
+            POINTS += 1
+            print(Fore.LIGHTGREEN_EX + "\n Correct!\n" + Fore.RESET)
+            print(f"Good Job, {USERNAME}!")
+            print("You have "+Fore.GREEN+f"{POINTS}"+Fore.RESET+" points.")
+            sleep(2)
+            clear()
+        elif answer != correct_answer and num_correct == 0:
+            print(Fore.RED + "Incorrect!" + Fore.RESET) 
+            print("The correct answer was",
+            Fore.LIGHTGREEN_EX + f"{correct_answer}!" + Fore.RESET)
+            sleep(3)
+            clear()
+            print(Fore.LIGHTRED_EX)
+            tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
+            print(Fore.RESET)
+            print(f"Good effort, {USERNAME}.\n")
+            print(f"You got {POINTS} points.\n")
+            print("Your score will be added to the leaderboard.\n")
+            update_leaderboard()
+            gameover()
+        else:
+            update_leaderboard()
+            gameover()
 
 
 def prepare_questions(questions, num_questions):

@@ -250,6 +250,7 @@ If the user selects to exit the game at any point they will be shown the followi
 ## Future Features ##
 - I'd like to incorporate an easy / hard mode
 - expand on the questions and allow the users a higher point system.
+- Incorporate a timer into the questions.
 
 
 [Back to top](<#contents>)
