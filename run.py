@@ -45,7 +45,6 @@ def clear():
     else:
         os.system('clear')
 
-
 def welcome_page():
     """
     The page that greets the user, promting to enter their username

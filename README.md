@@ -205,7 +205,7 @@ This is so the comnpetitive nature of the quiz can really be shown.
 If the user selects number 2 as their option. They are greeted with the instructions for the quiz.
 
 
-![Instructions](assets/readmeimages/instructions.png)
+![Instructions](assets/readmeimages/instructionss.png)
 
 
 [Back to top](<#contents>)
