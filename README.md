@@ -126,10 +126,14 @@ The Quiz main screen is again inspired by the colours of the french flag (Les Mi
 
 
 If the user enters a username that is less than 3 or more than 10 characters long, they will receive the following message;
+
 ![username error](assets/readmeimages/usernameerror.png)
 
+If the user enters a username using special characters or numbers then they will see this message:
 
-Once the user has put in the correct username character count, they are welcomed by the main menu;
+![username error](assets/readmeimages/usernamespecial.png)
+
+Once the user has put in the correct username character count and selection they are welcomed by the main menu;
 
 
 ![Main menu](assets/readmeimages/mainmenu.png)
