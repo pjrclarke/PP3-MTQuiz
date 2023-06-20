@@ -1,5 +1,5 @@
-![title](assets/readmeimages/title.png)
 
+![title](assets/readmeimages/title.png)
 
 Musical Theatre Quiz is a simple multiple choice quiz that offers the user a fun and exciting way of testing their knowledge of the musical arts.
 <br>
@@ -35,7 +35,7 @@ How many points can you get? Find out in [Musical Theatre Quiz](https://musical-
         * [Heroku](<#heroku>)
         * [Fork](<#to-fork-the-project>)
         * [Clone](<#to-clone-the-project>)
-* [Credits](<#credits>)
+* [**Credits**](<#credits>)
     * [Technologies used](<#technologies-used>)
     * [Acknowledgements](<#acknowledgments>)
 
@@ -404,7 +404,7 @@ The method to clone this repository is as follows;
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Provides the scripting for the website.
 * [Balsamiq](https://balsamiq.cloud/) - Used to create the wireframes.
 * [CodeAnywhere](https://codeanywhere.com/) - Used to host and edit all code and the website.
-* [Gitpod](https://www.gitpod.io/#get-started) - Used to deploy the website.
+* [Github](https://www.gitpod.io/#get-started) - Used to deploy the website.
 * [art](https://pypi.org/project/art/) - Used for the font art.
 
 
