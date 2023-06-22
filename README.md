@@ -18,7 +18,7 @@ How many points can you get? Find out in [Musical Theatre Quiz](https://musical-
     * [Design Choices](#design-choices)
         * [Typography](#typography)
         * [Colour Choices](#colour-choices)
-* [**The Quiz**](<#the-quiz>)
+* [**Features**](<#features>)
     * [Main Page](<#main-page>)
         * [The Quiz](<#play-the-quiz>)
         * [Instructions](<#instructions>)
@@ -31,12 +31,12 @@ How many points can you get? Find out in [Musical Theatre Quiz](https://musical-
     * [Debugging](<#debugging>)
         * [Bugs Remaining](<#bugs-remaining>)
         * [Fixed bugs](<#fixed-bugs>)
-    * [Deployment](<#deployment>)
-        * [Heroku](<#heroku>)
-        * [Fork](<#to-fork-the-project>)
-        * [Clone](<#to-clone-the-project>)
+* [**Deployment**](<#deployment>)
+    * [Heroku](<#heroku>)
+    * [Fork](<#to-fork-the-project>)
+    * [Clone](<#to-clone-the-project>)
+* [**Technologies used**](<#technologies-used>)
 * [**Credits**](<#credits>)
-    * [Technologies used](<#technologies-used>)
     * [Acknowledgements](<#acknowledgments>)
 
 
@@ -114,7 +114,7 @@ I also replicated this in the font colour choices for the most part of the quiz.
 <hr>
 
 
-# The Quiz #
+# Features #
 
 
 ## Main Page ##
@@ -266,7 +266,7 @@ If the user selects to exit the game at any point they will be shown the followi
 This threw up a few issues with indentation which I was unable to correct in time.
 
 
-![Python linter](assets/readmeimages/cilinter.png)
+![Python linter](assets/readmeimages/cipythonlinter1.png)
 
 
 It also came back with a line that was too long. Something definitely to fix.
@@ -396,11 +396,7 @@ The method to clone this repository is as follows;
 [Back to top](<#contents>)
 <hr>
 
-
-# Credits #
-
-
-## Technologies used ##
+# Technologies used #
 
 
 * [HTML5](https://en.wikipedia.org/wiki/HTML5) - Provides the content for the website.
@@ -419,6 +415,7 @@ The method to clone this repository is as follows;
 [Back to top](<#contents>)
 <hr>
 
+# Credits #
 
 ## Acknowledgments
 The site was completed as a Portfolio Project 3 piece for the Full Stack Software Developer (e-Commerce) Diploma at the [Code Institute](https://codeinstitute.net/). As such I would like to thank my mentor [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/), the Slack community, and all at the Code Institute for their help and support.

@@ -30,7 +30,7 @@ QUESTIONS_PATH = pathlib.Path(__file__).parent / "questions.toml"
 QUESTIONS = tomllib.loads(QUESTIONS_PATH.read_text())
 
 
-#GLOBAL FUNCTIONS
+# GLOBAL FUNCTIONS
 USERNAME = ""
 POINTS = 0
 NUM_QUESTIONS_PER_QUIZ = 53
@@ -44,6 +44,7 @@ def clear():
         os.system('cls')
     else:
         os.system('clear')
+
 
 def welcome_page():
     """
@@ -61,7 +62,7 @@ def welcome_page():
         if not re.match("^[a-zA-Z_]*$", USERNAME):
             clear()
             print(f"\n'{USERNAME}' contains special characters or numbers.\n")
-            print("Your username should only contain letters and underscores.\n")
+            print("Your username should only contain letters / underscores.\n")
         elif len(USERNAME) < 3 or len(USERNAME) > 10:
             clear()
             print(f"\n{USERNAME} is either too small or too big.")
@@ -161,11 +162,11 @@ def leaderboard():
     while index < 10:
         try:
             page_updated.append(page[index])
-        except :
+        except IndexError:
             page_updated.append('')
         index += 1
-    print(tabulate(page_updated, headers=["POSITION", "NAME", "POINTS"],
-            tablefmt='double_grid', numalign="center", showindex=row_id))
+        print(tabulate(page_updated, headers=["POSITION", "NAME", "POINTS"],
+              tablefmt='double_grid', numalign="center", showindex=row_id))
     try:
         input(Fore.RESET + "Press enter to return to the main menu")
         clear()
@@ -207,12 +208,14 @@ def play():
     - What happens when the user guesses correctly.
     - What happens when the user selects a wrong option.
     - How many points are awarded and displays this on screen.
-    
+
     """
     clear()
     print(f"Let's start the quiz, {USERNAME}.\n")
-    print("Answer as many questions as you can.\n") 
+    print("Answer as many questions as you can.\n")
     print("Each correct answer earns you one point.\n")
+    print(f"Remember, {USERNAME}...")
+    print("You only get" + Fore.LIGHTRED_EX + " ONE " + Fore.RESET + "life.\n")
     print("Type 'Q' to quit the game and return to the main menu.\n")
     print("The Quiz will start shortly. Good Luck!")
     sleep(5)
@@ -237,41 +240,41 @@ def play():
             update_leaderboard()
             game_over()
             return
-        while (answer_label := input("\nWhat's your answer?\n")) not in labeled_alternatives:
+        while True:
+            answer_label = input("\nWhat's your answer?\n").lower()
             if answer_label == "q":
                 clear()
                 main_menu_page()
+                break
+            elif answer_label in labeled_alternatives:
+                answer = labeled_alternatives[answer_label]
+                if answer == correct_answer:
+                    POINTS += 1
+                    print(Fore.LIGHTGREEN_EX + "\n Correct!\n" + Fore.RESET)
+                    print(f"Good Job, {USERNAME}!")
+                    print(f"You have {Fore.GREEN}{POINTS}{Fore.RESET} points.")
+                    sleep(2)
+                    clear()
+                    break
+                else:
+                    print(Fore.RED + "Incorrect!" + Fore.RESET)
+                    print("The correct answer was",
+                          f"{Fore.GREEN}{correct_answer}!{Fore.RESET}")
+                    sleep(3)
+                    clear()
+                    print(Fore.LIGHTRED_EX)
+                    tprint("{:>15}".format("GAME OVER\n"), font="rnd-medium\n")
+                    print(Fore.RESET)
+                    print(f"Good effort, {USERNAME}.\n")
+                    print(f"You got {POINTS} points.\n")
+                    print("Your score will be added to the leaderboard.\n")
+                    update_leaderboard()
+                    gameover()
+                    return
             else:
                 print(Fore.LIGHTRED_EX)
-                print(f"Not a valid option")
+                print("Invalid entry! Enter a valid option or 'Q' to quit.")
                 print(Fore.RESET)
-                print(f"Please enter {','.join(labeled_alternatives)}",
-                "or Q to quit to the main menu")
-        answer = labeled_alternatives[answer_label]
-        if answer == correct_answer:
-            POINTS += 1
-            print(Fore.LIGHTGREEN_EX + "\n Correct!\n" + Fore.RESET)
-            print(f"Good Job, {USERNAME}!")
-            print("You have "+Fore.GREEN+f"{POINTS}"+Fore.RESET+" points.")
-            sleep(2)
-            clear()
-        elif answer != correct_answer and num_correct == 0:
-            print(Fore.RED + "Incorrect!" + Fore.RESET) 
-            print("The correct answer was",
-            Fore.LIGHTGREEN_EX + f"{correct_answer}!" + Fore.RESET)
-            sleep(3)
-            clear()
-            print(Fore.LIGHTRED_EX)
-            tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
-            print(Fore.RESET)
-            print(f"Good effort, {USERNAME}.\n")
-            print(f"You got {POINTS} points.\n")
-            print("Your score will be added to the leaderboard.\n")
-            update_leaderboard()
-            gameover()
-        else:
-            update_leaderboard()
-            gameover()
 
 
 def prepare_questions(questions, num_questions):
