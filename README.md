@@ -308,9 +308,17 @@ Upon running my code through Code Institutes Python linter, it successfully retu
 
 ## Lighthouse ## 
 
-As this is still a live site I decided ot incorporate lighthouse testing which came back with the following results. 
+As the website is currently live, I deemed it necessary to conduct Lighthouse testing to assess its performance. The results of the Lighthouse testing are as follows:
+
+<details>
+<summary><b>Lighthouse Results</b></summary>
 
 ![Lighthouse](assets/readmeimages/lighthouse.png)
+
+</details>
+
+[Back to top](<#contents>)
+<hr>
 
 ## User Stories ##
 
@@ -341,15 +349,56 @@ Every aspect of the quiz has been carefully crafted to prioritize user understan
 
 
 ### Bugs remaining ###
-Aside from the small issues from the linter, there are no bugs remaining.
+
+No bugs remaining. 
 
 
 ### Fixed bugs ###
-- Issue when selecting an invalid option. FIXED
-- Number of questions not working. FIXED
-- Leaderboard was sending information but not retrieving - From the help of Ed at Code Institute, this was fixed.
-- No remaining bugs.
+- An issue arose when users selected an invalid option, resulting in the display of multiple error messages. However, this issue has been successfully addressed and resolved. 
+- There was an issue with the system exceeding the maximum limit of 50 questions, which prevented the congratulatory message from being displayed. However, this issue has been identified and resolved. The system now correctly tracks the number of questions answered and displays the congratulatory message when the user reaches the maximum of 50 questions.
+- The leaderboard functionality was encountering an issue where it was sending data but not retrieving it. With the assistance of Ed at Code Institute, this issue has been successfully resolved. The leaderboard now functions properly, allowing the retrieval of data as intended.
+- The provided code snippet was designed to enforce the input of lowercase characters exclusively, treating uppercase characters as invalid input and raising an appropriate error.
 
+```
+while True:
+            answer_label := input("\nWhat's your answer?\n").lower()
+            if answer_label.lower() == "q":
+                clear()
+                main_menu_page()
+            else:
+                print(Fore.LIGHTRED_EX)
+                print(f"Not a valid option")
+                print(Fore.RESET)
+                print(f"Please enter {','.join(labeled_alternatives)}",
+                "or Q to quit to the main menu")
+        answer = labeled_alternatives[answer_label]
+        if answer == correct_answer:
+            POINTS += 1
+            print(Fore.LIGHTGREEN_EX + "\n Correct!\n" + Fore.RESET)
+            print(f"Good Job, {USERNAME}!")
+            print("You have "+Fore.GREEN+f"{POINTS}"+Fore.RESET+" points.")
+            sleep(2)
+            clear()
+        elif answer != correct_answer and num_correct == 0:
+            print(Fore.RED + "Incorrect!" + Fore.RESET) 
+            print("The correct answer was",
+            Fore.LIGHTGREEN_EX + f"{correct_answer}!" + Fore.RESET)
+            sleep(3)
+            clear()
+            print(Fore.LIGHTRED_EX)
+            tprint("{:>15}".format("GAME OVER\n\n"), font="rnd-medium\n")
+            print(Fore.RESET)
+            print(f"Good effort, {USERNAME}.\n")
+            print(f"You got {POINTS} points.\n")
+            print("Your score will be added to the leaderboard.\n")
+            update_leaderboard()
+            gameover()
+        else:
+            update_leaderboard()
+            gameover()
+```
+
+Despite the initial attempt to enforce the exclusive use of lowercase characters, it was discovered that the implemented approach did not achieve the desired outcome. To address this, modifications were made by incorporating the lower() function within specific functions. As a result, the system now automatically converts user input to lowercase, ensuring consistent handling of uppercase and lowercase characters regardless of the user's input.
 
 [Back to top](<#contents>)
 <hr>
@@ -437,13 +486,22 @@ The method to clone this repository is as follows;
 * [CodeAnywhere](https://codeanywhere.com/) - Used to host and edit all code and the website.
 * [Github](https://www.gitpod.io/#get-started) - Used to deploy the website.
 * [art](https://pypi.org/project/art/) - Used for the font art.
+* [Miro](https://miro.com/) - Used to create the flow chart.
+* [ChatGPT](https://chat.openai.com/) - I utilised the tool as a means to effectively structure and organise my wording across the entirety of the readme file.
+
+## Python Packages ## 
 
 
+- art 5.9 - Font Art
+- colorama 0.4.6 - Colouring certain fonts / words within the quiz
+- tabulate 0.9.0 - Creation of tables for the leaderboard
 
 
 
 [Back to top](<#contents>)
 <hr>
+
+
 
 # Credits #
 
