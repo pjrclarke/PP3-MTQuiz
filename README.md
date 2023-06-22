@@ -1,13 +1,15 @@
 
 ![title](assets/readmeimages/title.png)
 
-Musical Theatre Quiz is a simple multiple choice quiz that offers the user a fun and exciting way of testing their knowledge of the musical arts.
-<br>
-Get a question right? you get a point! Get a question wrong and it's all over!
-How many points can you get? Find out in [Musical Theatre Quiz](https://musical-theater-quiz-c67f89732c69.herokuapp.com/).
+Introducing the Musical Theatre Quiz, an engaging and enjoyable multiple choice quiz that offers users an entertaining avenue to assess their expertise in the realm of musical arts.
 
+In this captivating quiz, each correct answer rewards participants with valuable points, while an incorrect response brings an end to the thrilling challenge.
 
-![mockup](assets/readmeimages/mockup.jpg)
+Curious to discover your potential? Embark on the Musical Theatre Quiz and put your knowledge to the test! 
+
+Visit [Musical Theatre Quiz](https://musical-theater-quiz-c67f89732c69.herokuapp.com/) and unearth the depths of your musical theatre acumen.
+
+![mockup](assets/readmeimages/responsive.png)
 
 
 # Contents
@@ -27,6 +29,7 @@ How many points can you get? Find out in [Musical Theatre Quiz](https://musical-
     * [Future Features](<#future-features>)
 * [**Testing**](<#testing>)
     * [Python Linter Testing](<#code-institute-python-linter>)
+    * [lighthouse](<#lighthouse>)
     * [User Stories](<#user-stories>)
     * [Debugging](<#debugging>)
         * [Bugs Remaining](<#bugs-remaining>)
@@ -44,102 +47,113 @@ How many points can you get? Find out in [Musical Theatre Quiz](https://musical-
 
 
 ## User Stories ##
-- As a user I would like an easy interface with clear instruction.
-- As a user I would like the quiz to be difficult but fun.
-- As a user I would like to be able to see the leaderboard.
-- As a user I would like to know my score and see how many points I can get.
-
+- As a user, I seek an interface characterised by its user-friendliness and the provision of lucid instructions, ensuring a seamless and intuitive user experience.
+- As a user, I desire a quiz that strikes an optimal balance between challenge and enjoyment, offering intellectually stimulating questions and an engaging format.
+- As a user, I aspire to access and peruse the leaderboard, enabling me to gauge my performance and compare my achievements with others, fostering a sense of competition and motivation.
+- As a user, I appreciate the ability to effortlessly ascertain my score, thereby gaining insight into my performance and tracking the accumulation of points, enhancing my engagement and satisfaction within the quiz.
 
 [Back to top](<#contents>)
 <hr>
 
-
-
-
-
-
 ## Wireframes ##
-The initial wireframes were made on [Balsamiq](https://www.balsamiq.cloud). These wireframes of the quiz show a somewhat less thought out design but shows how much I've built upon to make sure the UX is stronger.
+The preliminary wireframes were crafted utilising the powerful wireframing tool [Balsamiq](https://www.balsamiq.cloud). Although these wireframes may exhibit a degree of initial simplicity, they serve as a testament to the iterative nature of the design process and the extent to which I have diligently enhanced the user experience (UX). Embracing an agile mindset in the development process is of paramount importance, particularly when the resulting output lends itself to continuous improvement and expansion. 
 <br>
-
+<details>
+<summary><b>Balsamiq Wireframes</b></summary>
 
 ![wireframes](assets/readmeimages/wireframes.png)
 
+</details>
 
-I wanted to make this a really easy interface with little distraction to ensure the user has the best experience.
-
+My primary objective was to establish an interface characterised by simplicity and minimal distractions, thereby fostering an optimal user experience.
 
 [Back to top](<#contents>)
 <hr>
 
 
 ## Flow Charts ##
-I made the flow chart using [Lucid Chart](https://www.lucidchart.com). This again shows a little more thought out process including different difficulties which would be offered in a future build. It also details how only 10 questions would be shown. I decided in terms of a competitive user experience, it's better to have one mode and compete for that top spot.
+I crafted the flow chart using the powerful tool [Miro](https://miro.com/), meticulously designing a clear and seamless linear path. User experience was paramount in my mind, and I dedicated significant effort to ensure a flawlessly smooth journey for every user.
 
+<details>
+<summary><b>Miro Flow Charts</b></summary>
 
-![lucidchart](assets/readmeimages/PP3.png)
+![miro](assets/readmeimages/Flowchart1.jpg)
+![miro](assets/readmeimages/Flowcart2.jpg)
+![miro](assets/readmeimages/flowchart3.jpg)
 
+</details>
 
 [Back to top](<#contents>)
 <hr>
-
-
-
 
 ## Design Choices ##
 
 
 ### Typography ###
-Although technically not typography, the font art I used within my project was imported using [art](https://pypi.org/project/art/). I wanted the main screen to stand out and this can be seen by all headings within the quiz game.
-
+While not strictly falling under the domain of typography, I incorporated font art into my project by leveraging the '[ART](https://pypi.org/project/art/)' library. A primary objective of mine was to create a visually distinctive main screen, evident through the prominent utilisation of font art in various headings throughout the quiz game.
+<details>
+<summary><b>Font Art Title Page</b></summary>
 
 ![font](assets/readmeimages/title.png)
-
+</details>
 
 [Back to top](<#contents>)
 <hr>
 
 
 ### Colour Choices ###
-The colours I've chosen were inspired by the french flag. Mainly because when thinking of a standout group of colours for musical theatre, the french flag is such a prominent option due to the musical Les Miserables and it helps the screen pop out too. So I used the Linear gradient on [Gradient CSS](http://www.gradientcss.com/) to help me achieve this.
+The color scheme I meticulously curated draws inspiration from the esteemed French flag. The selection of these colors was driven by their association with the realm of musical theatre, particularly the renowned production of Les Misérables. By employing a linear gradient generated through the utilisation of [Gradient CSS](http://www.gradientcss.com/) , I deftly achieved the desired effect of enhancing visual prominence and making the screen truly captivating.
 
+<details>
+<summary><b>Gradient CSS Colouring</b></summary>
 
 ![Gradient backdrop](assets/readmeimages/gradientcss.png)
 
+</details>
 
-I also replicated this in the font colour choices for the most part of the quiz.
-
+Furthermore, I replicated this approach in the selection of font art colours employed throughout the majority of the quiz.
 
 [Back to top](<#contents>)
 <hr>
-
 
 # Features #
 
 
 ## Main Page ##
-The Quiz main screen is again inspired by the colours of the french flag (Les Miserables) and gives the user the option to enter their username, they can use characters and numbers.
-<br>
+The main screen of the Quiz is thoughtfully adorned with hues reminiscent of the French flag, drawing inspiration from the iconic musical "Les Misérables." Within this captivating interface, users are presented with the opportunity to input their username, which can encompass both alphanumeric characters and numerical values.
 
+<details>
+<summary><b>Main Page Imagery</b></summary>
 
 ![Main Page](assets/readmeimages/welcomepage.png)
+</details>
 
+In the event that the user enters a username containing fewer than three characters or exceeding the limit of ten characters, a corresponding message will be displayed, conveying the following information:
 
-If the user enters a username that is less than 3 or more than 10 characters long, they will receive the following message;
+<details>
+<summary><b>Username Character Count Error Imagery</b></summary>
 
 ![username error](assets/readmeimages/usernameerror.png)
+</details>
 
-If the user enters a username using special characters or numbers then they will see this message:
+If the user opts to input a username that includes special characters or numeric values, a message will be presented to inform them of the following:
+<details>
+
+<summary><b>Special / Numeric Character Error Imagery</b></summary>
 
 ![username error](assets/readmeimages/usernamespecial.png)
+</details>
 
-Once the user has put in the correct username character count and selection they are welcomed by the main menu;
+Upon successfully providing a username that adheres to the specified character count and selection criteria, the user is cordially greeted by the main menu, which serves as their point of entry into the quiz experience.
 
+<details>
+<summary><b>Main Menu Imagery</b></summary>
 
 ![Main menu](assets/readmeimages/mainmenu.png)
+</details>
 
+The user is then given 4 options;
 
-The user is then given 4 options.
 - 1) [Play the Quiz](<#play-the-quiz>)
 - 2) [Instructions](<#instructions>)
 - 3) [Leaderboard](<#leaderboard>)
@@ -151,48 +165,54 @@ The user is then given 4 options.
 
 
 ## Play the Quiz ##
+Upon selecting option one from the main menu, the user will seamlessly transition into the quiz section, where they can actively engage in answering the quiz questions.
 
-
-When the user selects option one, they will be pushed into the quiz.
-
+<details>
+<summary><b>Quiz Menu</b></summary>
 
 ![Quiz screen](assets/readmeimages/quizmain.png)
+</details>
 
+The user is presented with the opportunity to select their answer by choosing a number from the available options, ranging from 1 to 4.
 
-The user can then select 1,2,3 or 4 to choose their answer.
+In the event that the user provides an invalid option, not corresponding to any of the available choices, an appropriate message will be displayed to notify the user of their invalid input.
 
-
-If the user gives an invalid option;
-
+<details>
+<summary><b>Invalid Option</b></summary>
 
 ![Quiz screen](assets/readmeimages/quizmaininvalidoption.png)
 
+</details>
 
-If they guess correctly;
+If the user makes a correct guess, the system acknowledges their response and provides positive feedback to indicate their accurate selection.
+
+<details>
+<summary><b>Correct Answer Imagery</b></summary>
 
 
 ![Quiz screen](assets/readmeimages/correctanswer.png)
+</details>
+
+Upon providing a correct answer, the system incrementally adds a point to their overall score, duly acknowledging their accurate response. The user seamlessly proceeds to the subsequent question, advancing through the quiz.
 
 
-A point is added onto their tally and they continue onto the next question.
+In the case of an incorrect guess, the user is promptly notified of their error and provided with the correct answer. Subsequently, the game concludes, and the user is presented with the game over screen.
 
 
-If they guess incorrectly;
-
+<details>
+<summary><b>Incorrect Answer & Game Over Imagery</b></summary>
 
 ![Quiz screen](assets/readmeimages/incorrectanswer.png)
-
-
-They are notified that they are incorrect, are supplied with the correct answer and then shown the game over screen;
-
-
 ![Quiz screen](assets/readmeimages/gameoverpage.png)
-
-
+</details>
+<hr>
+<br>
 <b>You only have <u>ONE</u> life in this quiz.</b>
 
+<br>
 
-This is so the comnpetitive nature of the quiz can really be shown.
+This design feature highlights the competitive nature of the quiz, showcasing the importance of accuracy and knowledge in the user's quest for success.
+<br>
 
 
 [Back to top](<#contents>)
@@ -202,11 +222,12 @@ This is so the comnpetitive nature of the quiz can really be shown.
 ## Instructions ##
 
 
-If the user selects number 2 as their option. They are greeted with the instructions for the quiz.
-
+Upon selecting option 2, users are promptly presented with comprehensive instructions that serve as a guide for navigating through the quiz. This ensures that users are well-informed and equipped with the necessary information to proceed effectively.
+<details>
+<summary><b>Instructions Imagery</b></summary>
 
 ![Instructions](assets/readmeimages/instructionss.png)
-
+</details>
 
 [Back to top](<#contents>)
 <hr>
@@ -215,20 +236,25 @@ If the user selects number 2 as their option. They are greeted with the instruct
 ## Leaderboard ##
 
 
-If the user selects the leaderboard, then the leaderboard will show as follow;
+Upon selecting the leaderboard option, users will be presented with an organised and structured leaderboard display. This display showcases the rankings of participants, arranged in a clear and easily understandable format. Users can effortlessly observe and assess their relative position in relation to other participants, further enhancing the competitive aspect of the quiz experience.
+
+<details>
+<summary><b>Leaderboard Imagery</b></summary>
 
 
 ![Leaderboard](assets/readmeimages/leaderboard.png)
+</details>
 
+The leaderboard functionality incorporates an advanced integration with Google Sheets, enabling seamless data synchronization and real-time updates. The program dynamically populates the Google Sheet with the participants' scores, ensuring accurate tracking of their performance. The leaderboard is organised in descending order based on the scores achieved by the participants. 
 
-The leaderboard is updated and fed to a google sheet which the programme automatically puts into descending order based on the score. Only the top 10 will be shown. If a player is lucky enough to get into the top 10, they will automatically be updated to the spreadsheet.
+As a testament to their exceptional performance, only the top 10 participants are showcased, symbolizing a distinguished level of achievement. 
+
+<details>
+<summary><b>Google Sheet Imagery</b></summary>
 
 
 ![googlesheet leaderboard](assets/readmeimages/musicalquizleaderboardss.png)
-
-
-This is then automatically updated to reflect on the programme when the leaderboard is selected.
-
+</details>
 
 [Back to top](<#contents>)
 <hr>
@@ -236,21 +262,27 @@ This is then automatically updated to reflect on the programme when the leaderbo
 
 ## Exit Game ##
 
+In the event that the user opts to exit the game at any given point, a designated screen will be presented to provide a clear indication of their intent. This screen serves as a courteous farewell, acknowledging the user's decision to conclude their engagement with the game.
 
-If the user selects to exit the game at any point they will be shown the following screen.
-
+<details>
+<summary><b>Exit Screen Imagery</b></summary>
 
 ![Exit Screen](assets/readmeimages/exit.png)
 
+</details>
 
 [Back to top](<#contents>)
 <hr>
 
 
 ## Future Features ##
-- I'd like to incorporate an easy / hard mode
-- expand on the questions and allow the users a higher point system.
-- Incorporate a timer into the questions.
+- Implementation of an Easy/Hard mode: Introducing a user-selectable difficulty level will offer varying degrees of challenge, catering to different skill levels and preferences.
+
+- Expansion of question pool: Enriching the quiz with an extensive range of questions will provide users with a more comprehensive and engaging experience. 
+
+- Higher point system: Enhancing the scoring mechanism by incorporating a scaled point system will reward users for correctly answering more challenging questions. This adjustment will add depth and encourage users to strive for higher scores.
+
+- Integration of a timer: Incorporating a timer within each question will introduce an element of time pressure, enhancing the sense of urgency and adding an additional layer of challenge to the quiz. Users will be prompted to answer questions within a specified timeframe, promoting quick thinking and decision-making skills.
 
 
 [Back to top](<#contents>)
@@ -262,45 +294,43 @@ If the user selects to exit the game at any point they will be shown the followi
 
 ## Code Institute Python Linter ##
 
+Upon running my code through Code Institutes Python linter, it successfully returned a result with no detected errors. This outcome highlights the adherence of my code to the recommended Python coding standards and guidelines prescribed by Code Institute.
 
-This threw up a few issues with indentation which I was unable to correct in time.
-
+<details>
+<summary><b>Code Institutes Python Linter Results</b></summary>
 
 ![Python linter](assets/readmeimages/cipythonlinter1.png)
 
-
-It also came back with a line that was too long. Something definitely to fix.
-
+</details>
 
 [Back to top](<#contents>)
 <hr>
 
+## Lighthouse ## 
+
+As this is still a live site I decided ot incorporate lighthouse testing which came back with the following results. 
+
+![Lighthouse](assets/readmeimages/lighthouse.png)
 
 ## User Stories ##
 
+- As a user, I seek an interface characterised by its user-friendliness and the provision of lucid instructions, ensuring a seamless and intuitive user experience.
 
-- As a user I would like an easy interface with clear instruction.
+<b><em>This quiz has been designed with utmost clarity in mind. If any part feels unclear, worry not, as the instructions are there to provide the necessary guidance.
 
+Every aspect of the quiz has been carefully crafted to prioritize user understanding. The combination of user-friendly features and helpful instructions ensures a seamless and enjoyable experience. </b></em>
 
-<b><em>Every part of this quiz has been made to be clear. If it isn't, the instructions certainly help. </b></em>
+- As a user, I desire a quiz that strikes an optimal balance between challenge and enjoyment, offering intellectually stimulating questions and an engaging format.
 
+<b><em>As this interactive assessment takes the form of a multiple-choice quiz with an element of jeopardy, participants are presented with an engaging blend of amusement and risk. This meticulously crafted quiz embodies a harmonious fusion of enjoyment and strategic thinking, ensuring an immersive experience for all participants.</b></em>
 
-- As a user I would like the quiz to be difficult but fun.
+- As a user, I aspire to access and peruse the leaderboard, enabling me to gauge my performance and compare my achievements with others, fostering a sense of competition and motivation.
 
+<b><em>The implementation of this feature leverages the capabilities of Google Sheets, enabling seamless integration with the game system. Upon successfully navigating the main menu and making accurate selections, players will be granted access to the leaderboard, where they can witness and appreciate the rankings of fellow participants.</b></em>
 
-<b><em>As this is a multiple choice quiz AND practically a sudden death style quiz, you have the element of fun and danger wrapped up in a well thought out quiz.</b></em>
+- As a user, I appreciate the ability to effortlessly ascertain my score, thereby gaining insight into my performance and tracking the accumulation of points, enhancing my engagement and satisfaction within the quiz.
 
-
-- As a user I would like to be able to see the leaderboard.
-
-
-<b><em>This has been completed using the google sheets. Players will be able to view the leaderboard upon correct selection in the main menu.</b></em>
-
-
-- As a user I would like to know my score and see how many points I can get.
-
-
-<b><em>During the quiz the users are prompted each time they get a correct question and how many points they have received. They can also get the final score from the leaderboard (If they reach it).</b></em>
+<b><em>Throughout the quiz, participants will be promptly notified with congratulatory messages each time they provide a correct response, accompanied by the corresponding accumulation of points. Additionally, the option to retrieve the final score from the leaderboard will be available to users, provided they achieve a position worthy of inclusion.</b></em>
 
 
 [Back to top](<#contents>)
@@ -409,7 +439,7 @@ The method to clone this repository is as follows;
 * [art](https://pypi.org/project/art/) - Used for the font art.
 
 
-![Mockup](assets/readmeimages/responsive.png)
+
 
 
 [Back to top](<#contents>)
