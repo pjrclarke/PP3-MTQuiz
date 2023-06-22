@@ -340,6 +340,12 @@ Every aspect of the quiz has been carefully crafted to prioritize user understan
 
 <b><em>Throughout the quiz, participants will be promptly notified with congratulatory messages each time they provide a correct response, accompanied by the corresponding accumulation of points. Additionally, the option to retrieve the final score from the leaderboard will be available to users, provided they achieve a position worthy of inclusion.</b></em>
 
+[Back to top](<#contents>)
+<hr>
+
+## Functionality ##
+
+<b>All functionalities within the system operate as intended, without any deviations or unexpected behavior.</b>
 
 [Back to top](<#contents>)
 <hr>
